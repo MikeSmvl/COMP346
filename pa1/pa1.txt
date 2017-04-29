@@ -1,0 +1,11 @@
+Task 1: Atomicity Bug Hunt
+
+Since the depositor and withdrawer actions are not protected by a lock, the log can be corrupted if a context switch occurs. When the depositor and withdrawer are running concurrently, there can be context switches. Therefore, the accounts are updated non-atomically, resulting in these inconsistencies.
+
+Task 2: Starting Order
+
+Threads are executing in parallel and not sequentially. Therefore, the start order of the threads is determined by the JVM and/or operating system and not in the order in which they were started. A thread's life cycle involves its creation, execution and termination. When the thread is created it is in a "new" state and this is before the invocation of the start() method. Next, the thread is in a ready state after the invocation of the start() method, but the thread scheduler has not selected it to be the running thread. The thread is in a running state if the thread scheduler has selected it and in a waiting state if it is still "alive" but not eligible to run. Finally, a thread is in a terminated state when its run() method exits. 
+
+Task 5: Synchronized Block vs Synchronized Method
+
+The key advantage of a synchronized block is that you can surround just the "critical section" of a method in the synchronized block, while leaving the rest of the method out of the block. This will improve performance also because locking will be only be used when it is really required.
